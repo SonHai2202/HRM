@@ -353,7 +353,7 @@
 <button class="px-2 py-1 rounded border border-outline-variant hover:border-error hover:text-error text-gray-600 transition-colors" title="Từ chối">
 <span class="material-symbols-outlined text-[15px]">close</span>
 </button>
-<button class="p-1 rounded hover:bg-surface-container-high text-gray-500 hover:text-primary transition-colors" title="Xem chi tiết luồng duyệt">
+<button onclick="openDrawer('hr-request-detail-drawer')" class="p-1 rounded hover:bg-surface-container-high text-gray-500 hover:text-primary transition-colors" title="Xem chi tiết luồng duyệt">
 <span class="material-symbols-outlined text-[16px]">visibility</span>
 </button>
 </div>
@@ -413,7 +413,7 @@
 <button class="px-2 py-1 rounded border border-outline-variant hover:border-error hover:text-error text-gray-600 transition-colors" title="Từ chối">
 <span class="material-symbols-outlined text-[15px]">close</span>
 </button>
-<button class="p-1 rounded hover:bg-surface-container-high text-gray-500 hover:text-primary transition-colors" title="Xem chi tiết luồng duyệt">
+<button onclick="openDrawer('hr-request-detail-drawer')" class="p-1 rounded hover:bg-surface-container-high text-gray-500 hover:text-primary transition-colors" title="Xem chi tiết luồng duyệt">
 <span class="material-symbols-outlined text-[16px]">visibility</span>
 </button>
 </div>
@@ -473,7 +473,7 @@
 <button class="px-2 py-1 rounded border border-outline-variant hover:border-error hover:text-error text-gray-600 transition-colors" title="Từ chối">
 <span class="material-symbols-outlined text-[15px]">close</span>
 </button>
-<button class="p-1 rounded hover:bg-surface-container-high text-gray-500 hover:text-primary transition-colors" title="Xem chi tiết luồng duyệt">
+<button onclick="openDrawer('hr-request-detail-drawer')" class="p-1 rounded hover:bg-surface-container-high text-gray-500 hover:text-primary transition-colors" title="Xem chi tiết luồng duyệt">
 <span class="material-symbols-outlined text-[16px]">visibility</span>
 </button>
 </div>
@@ -533,7 +533,7 @@
 <button class="px-2 py-1 rounded border border-outline-variant hover:border-error hover:text-error text-gray-600 transition-colors" title="Từ chối">
 <span class="material-symbols-outlined text-[15px]">close</span>
 </button>
-<button class="p-1 rounded hover:bg-surface-container-high text-gray-500 hover:text-primary transition-colors" title="Xem chi tiết luồng duyệt">
+<button onclick="openDrawer('hr-request-detail-drawer')" class="p-1 rounded hover:bg-surface-container-high text-gray-500 hover:text-primary transition-colors" title="Xem chi tiết luồng duyệt">
 <span class="material-symbols-outlined text-[16px]">visibility</span>
 </button>
 </div>
@@ -593,7 +593,7 @@
 <button class="px-2 py-1 rounded border border-outline-variant hover:border-error hover:text-error text-gray-600 transition-colors" title="Từ chối">
 <span class="material-symbols-outlined text-[15px]">close</span>
 </button>
-<button class="p-1 rounded hover:bg-surface-container-high text-gray-500 hover:text-primary transition-colors" title="Xem chi tiết luồng duyệt">
+<button onclick="openDrawer('hr-request-detail-drawer')" class="p-1 rounded hover:bg-surface-container-high text-gray-500 hover:text-primary transition-colors" title="Xem chi tiết luồng duyệt">
 <span class="material-symbols-outlined text-[16px]">visibility</span>
 </button>
 </div>
@@ -675,6 +675,218 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+</script>
+
+
+<!-- DRAWER 2: Timeline & Thẩm định đơn chờ HR duyệt -->
+<div id="hr-request-detail-drawer" class="fixed inset-0 z-50 overflow-hidden hidden" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
+  <div class="drawer-backdrop fixed inset-0 bg-slate-900/40 backdrop-blur-xs transition-opacity duration-300 opacity-0" onclick="closeDrawer('hr-request-detail-drawer')"></div>
+
+  <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
+    <div class="drawer-panel w-screen max-w-[650px] bg-white shadow-2xl transform transition-transform duration-300 ease-in-out translate-x-full flex flex-col">
+      <!-- Header -->
+      <div class="px-6 py-4 bg-gradient-to-r from-blue-50 to-indigo-50/50 border-b border-outline-variant flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center font-bold">
+            <span class="material-symbols-outlined text-[24px]">fact_check</span>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h3 class="font-bold text-on-surface text-sm">Thẩm định & Phê duyệt đơn từ</h3>
+              <span class="font-mono font-bold text-primary text-xs">#REQ-2026-089</span>
+            </div>
+            <span class="text-xs text-gray-500">Đơn xin nghỉ phép năm • Nộp lúc 08:30 25/10/2026</span>
+          </div>
+        </div>
+        <button onclick="closeDrawer('hr-request-detail-drawer')" class="p-1.5 rounded-lg text-gray-400 hover:text-gray-700 hover:bg-white/80 transition-colors">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+
+      <!-- Body -->
+      <div class="p-6 space-y-5 overflow-y-auto flex-1 custom-scrollbar text-xs">
+        <!-- Thông tin nhân viên nộp đơn -->
+        <div class="p-3.5 bg-surface-container-low rounded-xl border border-outline-variant flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-primary text-white font-bold text-xs flex items-center justify-center shrink-0">AN</div>
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-on-surface text-sm">Nguyễn Văn An</span>
+                <span class="text-xs font-mono text-primary font-bold">KT-042</span>
+              </div>
+              <span class="text-xs text-gray-500">Kỹ sư Cơ điện • Phòng Kỹ thuật & Bảo trì</span>
+            </div>
+          </div>
+          <span class="px-2.5 py-1 rounded-full text-[11px] font-bold bg-blue-100 text-primary border border-blue-200">WAITING_HR</span>
+        </div>
+
+        <!-- Chi tiết đơn & Thời gian -->
+        <div class="space-y-2.5">
+          <h4 class="font-bold text-on-surface text-xs flex items-center gap-1.5 text-primary">
+            <span class="material-symbols-outlined text-[18px]">event_note</span>
+            <span>Chi tiết nội dung đơn từ:</span>
+          </h4>
+          <div class="p-3.5 bg-surface rounded-xl border border-outline-variant space-y-2 shadow-xs">
+            <div class="flex justify-between items-center text-xs">
+              <span class="text-gray-500">Loại đơn:</span>
+              <span class="font-bold text-primary">Nghỉ phép năm (Annual Leave)</span>
+            </div>
+            <div class="flex justify-between items-center text-xs">
+              <span class="text-gray-500">Thời gian áp dụng:</span>
+              <span class="font-bold font-mono text-on-surface">25/10/2026 (08:00 - 17:30)</span>
+            </div>
+            <div class="flex justify-between items-center text-xs">
+              <span class="text-gray-500">Khối lượng trừ phép:</span>
+              <span class="font-bold font-mono text-on-surface">1.0 ngày làm việc</span>
+            </div>
+            <div class="pt-2 border-t border-outline-variant/60">
+              <span class="text-gray-500 block mb-1">Lý do xin nghỉ:</span>
+              <p class="text-on-surface font-medium bg-gray-50 p-2.5 rounded-lg border border-outline-variant/50">Giải quyết việc thủ tục hành chính gia đình và gia hạn giấy phép lái xe.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Policy Safety Check (Chỉ số an toàn chính sách) -->
+        <div class="space-y-2.5">
+          <h4 class="font-bold text-on-surface text-xs flex items-center gap-1.5 text-green-700">
+            <span class="material-symbols-outlined text-[18px]">gpp_good</span>
+            <span>Policy Safety Check (Đánh giá an toàn chính sách):</span>
+          </h4>
+          <div class="p-3.5 bg-green-50/50 rounded-xl border border-green-200 space-y-2.5">
+            <div class="flex items-center justify-between text-xs">
+              <span class="text-gray-700">Quỹ phép năm hiện có:</span>
+              <span class="font-bold font-mono text-green-800">Còn dư 8.5 ngày phép</span>
+            </div>
+            <div class="flex items-center justify-between text-xs">
+              <span class="text-gray-700">Sau khi duyệt đơn này:</span>
+              <span class="font-bold font-mono text-primary">Còn lại 7.5 ngày phép (Hợp lệ)</span>
+            </div>
+            <div class="flex items-center justify-between text-xs pt-1.5 border-t border-green-200/60">
+              <span class="text-gray-700">Trùng lịch ca kíp:</span>
+              <span class="text-green-700 font-semibold flex items-center gap-1">
+                <span class="material-symbols-outlined text-[14px]">check_circle</span>
+                Không trùng ca trực vận hành khẩn cấp
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chứng từ đính kèm -->
+        <div class="space-y-2.5">
+          <h4 class="font-bold text-on-surface text-xs flex items-center gap-1.5 text-gray-700">
+            <span class="material-symbols-outlined text-[18px]">attachment</span>
+            <span>Tệp đính kèm / Chứng từ gốc:</span>
+          </h4>
+          <div class="p-3 bg-surface rounded-xl border border-outline-variant flex items-center justify-between hover:bg-gray-50 transition-colors">
+            <div class="flex items-center gap-2.5">
+              <span class="material-symbols-outlined text-red-500 text-[22px]">picture_as_pdf</span>
+              <div>
+                <span class="font-medium text-on-surface block text-xs">Giay_phep_lai_xe_gia_han.pdf</span>
+                <span class="text-[10px] text-gray-400">1.2 MB • Cập nhật lúc nộp đơn</span>
+              </div>
+            </div>
+            <button onclick="alert('Đang mở xem chứng từ đính kèm...')" class="px-2.5 py-1 bg-surface-container-low hover:bg-blue-50 text-primary border border-outline-variant rounded-lg text-xs font-semibold transition-colors flex items-center gap-1">
+              <span class="material-symbols-outlined text-[14px]">visibility</span> Xem tệp
+            </button>
+          </div>
+        </div>
+
+        <!-- Approval Workflow Timeline -->
+        <div class="space-y-2.5">
+          <h4 class="font-bold text-on-surface text-xs flex items-center gap-1.5 text-primary">
+            <span class="material-symbols-outlined text-[18px]">timeline</span>
+            <span>Tiến trình phê duyệt (Approval Workflow Log):</span>
+          </h4>
+          <div class="relative pl-6 space-y-4 before:content-[''] before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-outline-variant">
+            <!-- Step 1 -->
+            <div class="relative">
+              <div class="absolute -left-6 top-0 w-4 h-4 rounded-full bg-green-600 border-2 border-white ring-2 ring-green-100 flex items-center justify-center">
+                <span class="material-symbols-outlined text-[10px] text-white">check</span>
+              </div>
+              <div class="bg-gray-50 p-3 rounded-lg border border-outline-variant/60">
+                <div class="flex items-center justify-between mb-1">
+                  <span class="font-bold text-on-surface text-xs">Cấp 1: Quản lý trực tiếp (Manager)</span>
+                  <span class="text-[10px] text-green-700 font-bold bg-green-100 px-1.5 py-0.2 rounded">APPROVED</span>
+                </div>
+                <div class="text-[11px] text-gray-600">Người duyệt: <b class="text-on-surface">Lê Hoàng Nam</b> • 09:15 25/10/2026</div>
+                <div class="text-[11px] text-gray-500 italic mt-1">"Đồng ý phê duyệt, bộ phận đã có người trực thay ca."</div>
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="relative">
+              <div class="absolute -left-6 top-0 w-4 h-4 rounded-full bg-primary border-2 border-white ring-2 ring-blue-100 flex items-center justify-center">
+                <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+              </div>
+              <div class="bg-blue-50/50 p-3 rounded-lg border border-blue-200">
+                <div class="flex items-center justify-between mb-1">
+                  <span class="font-bold text-primary text-xs">Cấp 2: Phòng Nhân sự (HR Phase)</span>
+                  <span class="text-[10px] text-primary font-bold bg-blue-100 px-1.5 py-0.2 rounded">PENDING HR</span>
+                </div>
+                <div class="text-[11px] text-gray-600">Phụ trách thẩm duyệt: <b class="text-on-surface">Võ Thị Thảo (HR Specialist)</b></div>
+                <div class="text-[11px] text-gray-500 mt-1">Chờ HR hoàn tất thẩm định quỹ phép và ra quyết định.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Footer -->
+      <div class="p-4 bg-gray-50 border-t border-outline-variant flex items-center justify-between gap-3">
+        <button onclick="const reason = prompt('Nhập lý do từ chối đơn:'); if(reason) { alert('Đã từ chối đơn!'); closeDrawer('hr-request-detail-drawer'); }" class="px-4 py-2 border border-red-200 text-error hover:bg-red-50 rounded-lg text-xs font-semibold transition-colors flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-[16px]">cancel</span>
+          <span>Từ chối</span>
+        </button>
+        <div class="flex items-center gap-2">
+          <button onclick="closeDrawer('hr-request-detail-drawer')" class="px-4 py-2 border border-outline-variant rounded-lg text-xs font-medium text-gray-700 hover:bg-white transition-colors">
+            Đóng
+          </button>
+          <button onclick="alert('Phê duyệt đơn thành công! Hệ thống đã trừ quỹ phép của nhân viên.'); closeDrawer('hr-request-detail-drawer');" class="px-5 py-2 bg-primary text-white rounded-lg text-xs font-semibold hover:bg-primary-container transition-colors shadow-sm flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[16px]">check_circle</span>
+            <span>Đồng ý phê duyệt</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- DRAWER CONTROLLER SCRIPT -->
+<script>
+  function openDrawer(drawerId) {
+    const drawer = document.getElementById(drawerId);
+    if (!drawer) return;
+    drawer.classList.remove('hidden');
+    setTimeout(() => {
+      const backdrop = drawer.querySelector('.drawer-backdrop');
+      const panel = drawer.querySelector('.drawer-panel');
+      if (backdrop) backdrop.classList.remove('opacity-0');
+      if (panel) panel.classList.remove('translate-x-full');
+    }, 10);
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDrawer(drawerId) {
+    const drawer = document.getElementById(drawerId);
+    if (!drawer) return;
+    const backdrop = drawer.querySelector('.drawer-backdrop');
+    const panel = drawer.querySelector('.drawer-panel');
+    if (backdrop) backdrop.classList.add('opacity-0');
+    if (panel) panel.classList.add('translate-x-full');
+    setTimeout(() => {
+      drawer.classList.add('hidden');
+      document.body.style.overflow = '';
+    }, 300);
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('[id$="-drawer"]:not(.hidden)').forEach(d => {
+        closeDrawer(d.id);
+      });
+    }
+  });
 </script>
 
 </body></html>

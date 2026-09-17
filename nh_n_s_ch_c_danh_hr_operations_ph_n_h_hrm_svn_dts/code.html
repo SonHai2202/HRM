@@ -350,7 +350,7 @@
 </td>
 <td class="py-3.5 px-3 text-center">
 <div class="flex items-center justify-center gap-1.5">
-<button class="p-1.5 rounded-lg bg-primary text-white hover:bg-primary-container transition-colors shadow-xs" title="Xem/Sửa hồ sơ">
+<button onclick="openDrawer('employee-profile-drawer')" <button class="p-1.5 rounded-lg bg-primary text-white hover:bg-primary-container transition-colors shadow-xs" title="Xem/Sửa hồ sơ">
 <span class="material-symbols-outlined text-[16px]">edit_document</span>
 </button>
 <button class="p-1.5 rounded-lg border border-outline-variant/60 text-gray-700 hover:bg-surface-container-high transition-colors shadow-xs" title="Đổi trạng thái">
@@ -393,7 +393,7 @@
 </td>
 <td class="py-3.5 px-3 text-center">
 <div class="flex items-center justify-center gap-1.5">
-<button class="p-1.5 rounded-lg border border-outline-variant/60 text-primary hover:bg-blue-50 transition-colors shadow-xs" title="Xem/Sửa hồ sơ">
+<button onclick="openDrawer('employee-profile-drawer')" <button class="p-1.5 rounded-lg border border-outline-variant/60 text-primary hover:bg-blue-50 transition-colors shadow-xs" title="Xem/Sửa hồ sơ">
 <span class="material-symbols-outlined text-[16px]">edit_document</span>
 </button>
 <button class="p-1.5 rounded-lg bg-green-100 border border-green-200 text-green-700 hover:bg-green-200 transition-colors shadow-xs" title="Chuyển chính thức">
@@ -436,7 +436,7 @@
 </td>
 <td class="py-3.5 px-3 text-center">
 <div class="flex items-center justify-center gap-1.5">
-<button class="p-1.5 rounded-lg border border-outline-variant/60 text-primary hover:bg-blue-50 transition-colors shadow-xs" title="Xem/Sửa hồ sơ">
+<button onclick="openDrawer('employee-profile-drawer')" <button class="p-1.5 rounded-lg border border-outline-variant/60 text-primary hover:bg-blue-50 transition-colors shadow-xs" title="Xem/Sửa hồ sơ">
 <span class="material-symbols-outlined text-[16px]">edit_document</span>
 </button>
 <button class="p-1.5 rounded-lg border border-outline-variant/60 text-gray-700 hover:bg-surface-container-high transition-colors shadow-xs" title="Đổi trạng thái">
@@ -479,7 +479,7 @@
 </td>
 <td class="py-3.5 px-3 text-center">
 <div class="flex items-center justify-center gap-1.5">
-<button class="p-1.5 rounded-lg border border-outline-variant/60 text-primary hover:bg-blue-50 transition-colors shadow-xs" title="Xem/Sửa hồ sơ">
+<button onclick="openDrawer('employee-profile-drawer')" <button class="p-1.5 rounded-lg border border-outline-variant/60 text-primary hover:bg-blue-50 transition-colors shadow-xs" title="Xem/Sửa hồ sơ">
 <span class="material-symbols-outlined text-[16px]">edit_document</span>
 </button>
 <button class="p-1.5 rounded-lg border border-outline-variant/60 text-gray-700 hover:bg-surface-container-high transition-colors shadow-xs" title="Đổi trạng thái">
@@ -522,7 +522,7 @@
 </td>
 <td class="py-3.5 px-3 text-center">
 <div class="flex items-center justify-center gap-1.5">
-<button class="p-1.5 rounded-lg border border-outline-variant/60 text-primary hover:bg-blue-50 transition-colors shadow-xs" title="Xem/Sửa hồ sơ">
+<button onclick="openDrawer('employee-profile-drawer')" <button class="p-1.5 rounded-lg border border-outline-variant/60 text-primary hover:bg-blue-50 transition-colors shadow-xs" title="Xem/Sửa hồ sơ">
 <span class="material-symbols-outlined text-[16px]">edit_document</span>
 </button>
 <button class="p-1.5 rounded-lg border border-outline-variant/60 text-gray-700 hover:bg-surface-container-high transition-colors shadow-xs" title="Đổi trạng thái">
@@ -693,6 +693,217 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+</script>
+
+
+<!-- DRAWER 4: Xem / Sửa hồ sơ nhân sự mở rộng -->
+<div id="employee-profile-drawer" class="fixed inset-0 z-50 overflow-hidden hidden" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
+  <div class="drawer-backdrop fixed inset-0 bg-slate-900/40 backdrop-blur-xs transition-opacity duration-300 opacity-0" onclick="closeDrawer('employee-profile-drawer')"></div>
+
+  <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
+    <div class="drawer-panel w-screen max-w-[680px] bg-white shadow-2xl transform transition-transform duration-300 ease-in-out translate-x-full flex flex-col">
+      <!-- Header -->
+      <div class="px-6 py-4 bg-gradient-to-r from-blue-50 to-indigo-50/50 border-b border-outline-variant flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-primary to-blue-400 text-white font-bold text-sm flex items-center justify-center border-2 border-white shadow-sm shrink-0">
+            NA
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h3 class="font-bold text-on-surface text-base">Nguyễn Văn An</h3>
+              <span class="font-mono font-bold text-primary text-xs bg-blue-100/70 px-2 py-0.5 rounded">KT-042</span>
+              <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-green-100 text-green-700 border border-green-200">OFFICIAL</span>
+            </div>
+            <span class="text-xs text-gray-500">Kỹ sư Cơ điện bậc 3 • Phòng Kỹ thuật & Bảo trì</span>
+          </div>
+        </div>
+        <button onclick="closeDrawer('employee-profile-drawer')" class="p-1.5 rounded-lg text-gray-400 hover:text-gray-700 hover:bg-white/80 transition-colors">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+
+      <!-- Tab Switcher inside Drawer -->
+      <div class="px-6 pt-3 border-b border-outline-variant flex gap-6 bg-surface">
+        <button id="drawer-tab-btn-1" onclick="switchEmpTab(1)" class="pb-2.5 font-bold text-xs text-primary border-b-2 border-primary flex items-center gap-1.5 transition-colors">
+          <span class="material-symbols-outlined text-[16px]">badge</span>
+          <span>Tab 1: Thông tin mở rộng</span>
+        </button>
+        <button id="drawer-tab-btn-2" onclick="switchEmpTab(2)" class="pb-2.5 font-medium text-xs text-gray-500 hover:text-primary flex items-center gap-1.5 transition-colors">
+          <span class="material-symbols-outlined text-[16px]">account_balance</span>
+          <span>Tab 2: Thuế & Ngân hàng</span>
+        </button>
+      </div>
+
+      <!-- Body -->
+      <div class="p-6 space-y-4 overflow-y-auto flex-1 custom-scrollbar text-xs">
+        <!-- Tab 1: Thông tin mở rộng -->
+        <div id="drawer-emp-tab-1" class="space-y-4">
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="text-[11px] text-gray-600 block mb-1 font-medium">Ngày sinh:</label>
+              <input type="date" value="1992-05-18" class="w-full border border-outline-variant rounded-lg px-3 py-2 text-xs font-mono bg-white focus:ring-1 focus:ring-primary"/>
+            </div>
+            <div>
+              <label class="text-[11px] text-gray-600 block mb-1 font-medium">Giới tính:</label>
+              <select class="w-full border border-outline-variant rounded-lg px-3 py-2 text-xs bg-white focus:ring-1 focus:ring-primary">
+                <option selected>Nam</option>
+                <option>Nữ</option>
+                <option>Khác</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="text-[11px] text-gray-600 block mb-1 font-medium">Số CCCD / Hộ chiếu:</label>
+              <input type="text" value="001092008472" class="w-full border border-outline-variant rounded-lg px-3 py-2 text-xs font-mono font-bold bg-white focus:ring-1 focus:ring-primary"/>
+            </div>
+            <div>
+              <label class="text-[11px] text-gray-600 block mb-1 font-medium">Ngày cấp CCCD:</label>
+              <input type="date" value="2021-08-10" class="w-full border border-outline-variant rounded-lg px-3 py-2 text-xs font-mono bg-white focus:ring-1 focus:ring-primary"/>
+            </div>
+          </div>
+
+          <div>
+            <label class="text-[11px] text-gray-600 block mb-1 font-medium">Địa chỉ thường trú:</label>
+            <input type="text" value="Số 45 ngõ 128 đường Hoàng Mai, P. Tương Mai, Q. Hoàng Mai, Hà Nội" class="w-full border border-outline-variant rounded-lg px-3 py-2 text-xs bg-white focus:ring-1 focus:ring-primary"/>
+          </div>
+
+          <div class="p-3.5 bg-gray-50 rounded-xl border border-outline-variant space-y-3">
+            <h5 class="font-bold text-on-surface text-xs flex items-center gap-1.5 text-error">
+              <span class="material-symbols-outlined text-[16px]">contact_phone</span>
+              <span>Liên hệ khẩn cấp (Emergency Contact):</span>
+            </h5>
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="text-[11px] text-gray-500 block mb-1">Người liên hệ (Quan hệ):</label>
+                <input type="text" value="Nguyễn Thị Mai (Vợ)" class="w-full border border-outline-variant rounded-lg px-2.5 py-1.5 text-xs bg-white"/>
+              </div>
+              <div>
+                <label class="text-[11px] text-gray-500 block mb-1">Số điện thoại khẩn cấp:</label>
+                <input type="text" value="0988 123 456" class="w-full border border-outline-variant rounded-lg px-2.5 py-1.5 text-xs font-mono bg-white"/>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <label class="text-[11px] text-gray-600 block mb-1 font-medium">Ghi chú nội bộ (Internal Note):</label>
+            <textarea class="w-full border border-outline-variant rounded-lg p-2.5 text-xs bg-white focus:ring-1 focus:ring-primary" rows="2" placeholder="Nhập ghi chú nhân sự nội bộ...">Nhân sự chủ chốt dự án dây chuyền đóng gói DTS-2026. Đã cấp chứng chỉ an toàn điện cao thế.</textarea>
+          </div>
+        </div>
+
+        <!-- Tab 2: Thuế & Ngân hàng -->
+        <div id="drawer-emp-tab-2" class="space-y-4 hidden">
+          <div class="p-3.5 bg-blue-50/40 rounded-xl border border-blue-200">
+            <span class="text-xs text-primary font-bold block mb-1">Tài khoản thanh toán lương chính thức:</span>
+            <p class="text-[11px] text-gray-600">Thông tin tài khoản được sử dụng trực tiếp để xuất file chuyển khoản ngân hàng (Batch Payment).</p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="text-[11px] text-gray-600 block mb-1 font-medium">Số tài khoản ngân hàng:</label>
+              <input type="text" value="19038472910012" class="w-full border border-outline-variant rounded-lg px-3 py-2 text-xs font-mono font-bold bg-white focus:ring-1 focus:ring-primary"/>
+            </div>
+            <div>
+              <label class="text-[11px] text-gray-600 block mb-1 font-medium">Ngân hàng thụ hưởng:</label>
+              <input type="text" value="Techcombank (TCB)" class="w-full border border-outline-variant rounded-lg px-3 py-2 text-xs font-semibold bg-white focus:ring-1 focus:ring-primary"/>
+            </div>
+          </div>
+
+          <div>
+            <label class="text-[11px] text-gray-600 block mb-1 font-medium">Chi nhánh ngân hàng:</label>
+            <input type="text" value="Chi nhánh Thăng Long - Hà Nội" class="w-full border border-outline-variant rounded-lg px-3 py-2 text-xs bg-white focus:ring-1 focus:ring-primary"/>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4 pt-2 border-t border-outline-variant">
+            <div>
+              <label class="text-[11px] text-gray-600 block mb-1 font-medium">Mã số thuế cá nhân (MST):</label>
+              <input type="text" value="8492019481" class="w-full border border-outline-variant rounded-lg px-3 py-2 text-xs font-mono font-bold text-primary bg-white focus:ring-1 focus:ring-primary"/>
+            </div>
+            <div>
+              <label class="text-[11px] text-gray-600 block mb-1 font-medium">Số người phụ thuộc (Giảm trừ):</label>
+              <input type="number" value="1" class="w-full border border-outline-variant rounded-lg px-3 py-2 text-xs font-mono font-bold bg-white focus:ring-1 focus:ring-primary"/>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="p-4 bg-gray-50 border-t border-outline-variant flex items-center justify-between gap-3">
+        <button onclick="alert('Đã cập nhật trạng thái hợp đồng nhân sự!');" class="px-4 py-2 border border-outline-variant text-primary hover:bg-blue-50 rounded-lg text-xs font-semibold transition-colors flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-[16px]">task_alt</span>
+          <span>Chuyển chính thức</span>
+        </button>
+        <div class="flex items-center gap-2">
+          <button onclick="closeDrawer('employee-profile-drawer')" class="px-4 py-2 border border-outline-variant rounded-lg text-xs font-medium text-gray-700 hover:bg-white transition-colors">
+            Hủy
+          </button>
+          <button onclick="alert('Đã lưu cập nhật hồ sơ nhân sự thành công!'); closeDrawer('employee-profile-drawer');" class="px-5 py-2 bg-primary text-white rounded-lg text-xs font-semibold hover:bg-primary-container transition-colors shadow-sm flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[16px]">save</span>
+            <span>Lưu hồ sơ</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function switchEmpTab(tabIdx) {
+    const tab1 = document.getElementById('drawer-emp-tab-1');
+    const tab2 = document.getElementById('drawer-emp-tab-2');
+    const btn1 = document.getElementById('drawer-tab-btn-1');
+    const btn2 = document.getElementById('drawer-tab-btn-2');
+    if (tabIdx === 1) {
+      tab1.classList.remove('hidden');
+      tab2.classList.add('hidden');
+      btn1.className = 'pb-2.5 font-bold text-xs text-primary border-b-2 border-primary flex items-center gap-1.5 transition-colors';
+      btn2.className = 'pb-2.5 font-medium text-xs text-gray-500 hover:text-primary flex items-center gap-1.5 transition-colors';
+    } else {
+      tab1.classList.add('hidden');
+      tab2.classList.remove('hidden');
+      btn2.className = 'pb-2.5 font-bold text-xs text-primary border-b-2 border-primary flex items-center gap-1.5 transition-colors';
+      btn1.className = 'pb-2.5 font-medium text-xs text-gray-500 hover:text-primary flex items-center gap-1.5 transition-colors';
+    }
+  }
+</script>
+
+
+<!-- DRAWER CONTROLLER SCRIPT -->
+<script>
+  function openDrawer(drawerId) {
+    const drawer = document.getElementById(drawerId);
+    if (!drawer) return;
+    drawer.classList.remove('hidden');
+    setTimeout(() => {
+      const backdrop = drawer.querySelector('.drawer-backdrop');
+      const panel = drawer.querySelector('.drawer-panel');
+      if (backdrop) backdrop.classList.remove('opacity-0');
+      if (panel) panel.classList.remove('translate-x-full');
+    }, 10);
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDrawer(drawerId) {
+    const drawer = document.getElementById(drawerId);
+    if (!drawer) return;
+    const backdrop = drawer.querySelector('.drawer-backdrop');
+    const panel = drawer.querySelector('.drawer-panel');
+    if (backdrop) backdrop.classList.add('opacity-0');
+    if (panel) panel.classList.add('translate-x-full');
+    setTimeout(() => {
+      drawer.classList.add('hidden');
+      document.body.style.overflow = '';
+    }, 300);
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('[id$="-drawer"]:not(.hidden)').forEach(d => {
+        closeDrawer(d.id);
+      });
+    }
+  });
 </script>
 
 </body></html>
