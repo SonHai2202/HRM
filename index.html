@@ -142,39 +142,32 @@
   <!-- ==================== MAIN CONTENT AREA ==================== -->
   <div class="flex-1 flex flex-col h-full overflow-hidden">
     
-    <!-- Top Control Header & Sub-tabs Bar -->
-    <header class="bg-white border-b border-slate-200 px-5 pt-3 pb-0 shadow-sm flex flex-col shrink-0 z-10">
+    <!-- Top Control Header (Đã tinh gọn, bỏ sub-tabs bị trùng để dùng sub-tab gốc bên trong từng màn hình) -->
+    <header class="bg-white border-b border-slate-200 px-5 py-3 shadow-sm flex items-center justify-between shrink-0 z-10">
       
       <!-- Top Meta Bar -->
-      <div class="flex items-center justify-between pb-2.5">
-        <div class="flex items-center gap-3">
-          <span class="text-xs font-semibold px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200" id="current-badge">TỔNG QUAN</span>
-          <h1 class="text-base font-bold text-slate-900 font-heading flex items-center gap-1.5" id="current-title">
-            Bàn làm việc
-          </h1>
-          <span class="text-xs text-slate-400 font-normal hidden sm:inline" id="current-subtitle">| Dashboard điều hành nhân sự</span>
-        </div>
-
-        <!-- Quick actions / screen selector dropdown -->
-        <div class="flex items-center gap-2.5">
-          <div class="relative">
-            <select id="screen-selector" onchange="loadDirectScreen(this.value)" class="text-xs bg-slate-50 border border-slate-300 rounded-lg px-2.5 py-1.5 text-slate-700 font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 max-w-[280px]">
-              <!-- Options populated dynamically by JS -->
-            </select>
-          </div>
-          
-          <button onclick="refreshCurrentFrame()" title="Tải lại giao diện hiện tại" class="p-1.5 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition-colors border border-slate-200">
-            <span class="material-symbols-outlined text-[18px]">refresh</span>
-          </button>
-          <button onclick="openCurrentInNewTab()" title="Mở trong tab mới" class="p-1.5 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition-colors border border-slate-200">
-            <span class="material-symbols-outlined text-[18px]">open_in_new</span>
-          </button>
-        </div>
+      <div class="flex items-center gap-3">
+        <span class="text-xs font-semibold px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200" id="current-badge">TỔNG QUAN</span>
+        <h1 class="text-base font-bold text-slate-900 font-heading flex items-center gap-1.5" id="current-title">
+          Bàn làm việc
+        </h1>
+        <span class="text-xs text-slate-400 font-normal hidden sm:inline" id="current-subtitle">| Dashboard điều hành nhân sự</span>
       </div>
 
-      <!-- Horizontal Sub-tabs Strip -->
-      <div class="flex space-x-6 overflow-x-auto custom-scrollbar text-xs font-medium border-t border-slate-100 pt-1" id="subtabs-container">
-        <!-- Subtabs generated dynamically -->
+      <!-- Quick actions / screen selector dropdown -->
+      <div class="flex items-center gap-2.5">
+        <div class="relative">
+          <select id="screen-selector" onchange="loadDirectScreen(this.value)" class="text-xs bg-slate-50 border border-slate-300 rounded-lg px-2.5 py-1.5 text-slate-700 font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 max-w-[280px]">
+            <!-- Options populated dynamically by JS -->
+          </select>
+        </div>
+        
+        <button onclick="refreshCurrentFrame()" title="Tải lại giao diện hiện tại" class="p-1.5 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition-colors border border-slate-200">
+          <span class="material-symbols-outlined text-[18px]">refresh</span>
+        </button>
+        <button onclick="openCurrentInNewTab()" title="Mở trong tab mới" class="p-1.5 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition-colors border border-slate-200">
+          <span class="material-symbols-outlined text-[18px]">open_in_new</span>
+        </button>
       </div>
     </header>
 
@@ -374,9 +367,6 @@
       document.getElementById('current-title').textContent = mod.title;
       document.getElementById('current-badge').textContent = mod.badge;
       document.getElementById('current-subtitle').textContent = "| " + mod.subtitle;
-
-      // Render Sub-tabs strip
-      renderSubtabs(mod);
 
       // Load content iframe
       loadIframeContent(currentTabPath);
