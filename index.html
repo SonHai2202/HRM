@@ -36,20 +36,20 @@
       <div>
         <div class="text-[10px] font-bold text-white/45 tracking-wider px-3.5 pb-1 uppercase">TỔNG QUAN</div>
         <div class="space-y-0.5">
-          <button data-mod="dashboard" onclick="navigateModule('dashboard')" class="nav-btn w-full flex items-center justify-between px-3.5 py-2 text-white/75 hover:text-white hover:bg-white/10 rounded-lg transition-colors text-left group">
-            <div class="flex items-center gap-2.5">
-              <span class="material-symbols-outlined text-[19px] text-white/70 group-hover:text-white">dashboard</span>
+          <button data-mod="dashboard" onclick="navigateModule('dashboard')" class="nav-btn w-full flex items-center gap-2.5 px-3.5 py-2 text-white/75 hover:text-white hover:bg-white/10 rounded-lg transition-colors text-left group">
+            <span class="material-symbols-outlined text-[19px] text-white/70 group-hover:text-white">dashboard</span>
+            <div class="flex-1 flex items-center justify-between">
               <span class="text-[13px] font-medium">Bàn làm việc</span>
+              <span class="text-[10px] bg-blue-500/30 text-blue-200 px-1.5 py-0.2 rounded font-mono">Live</span>
             </div>
-            <span class="text-[10px] bg-blue-500/30 text-blue-200 px-1.5 py-0.2 rounded font-mono">Live</span>
           </button>
           
-          <button data-mod="inbox" onclick="navigateModule('inbox')" class="nav-btn w-full flex items-center justify-between px-3.5 py-2 text-white/75 hover:text-white hover:bg-white/10 rounded-lg transition-colors text-left group">
-            <div class="flex items-center gap-2.5">
-              <span class="material-symbols-outlined text-[19px] text-white/70 group-hover:text-white">inbox</span>
+          <button data-mod="inbox" onclick="navigateModule('inbox')" class="nav-btn w-full flex items-center gap-2.5 px-3.5 py-2 text-white/75 hover:text-white hover:bg-white/10 rounded-lg transition-colors text-left group">
+            <span class="material-symbols-outlined text-[19px] text-white/70 group-hover:text-white">inbox</span>
+            <div class="flex-1 flex items-center justify-between">
               <span class="text-[13px] font-medium">Việc cần xử lý</span>
+              <span class="text-[11px] bg-rose-500 text-white px-1.5 py-0.2 rounded-full font-bold">12</span>
             </div>
-            <span class="text-[11px] bg-rose-500 text-white px-1.5 py-0.2 rounded-full font-bold">12</span>
           </button>
         </div>
       </div>
@@ -350,9 +350,9 @@
       // Update sidebar active highlight
       document.querySelectorAll('#sidebar-nav .nav-btn').forEach(btn => {
         if (btn.dataset.mod === modKey) {
-          btn.className = "nav-btn w-full flex items-center justify-between px-3.5 py-2 text-white bg-white/20 font-semibold rounded-lg border-l-4 border-white transition-colors text-left";
+          btn.className = "nav-btn w-full flex items-center gap-2.5 px-3.5 py-2 text-white bg-white/20 font-semibold rounded-lg border-l-4 border-white transition-colors text-left";
         } else {
-          btn.className = "nav-btn w-full flex items-center justify-between px-3.5 py-2 text-white/75 hover:text-white hover:bg-white/10 rounded-lg transition-colors text-left group";
+          btn.className = "nav-btn w-full flex items-center gap-2.5 px-3.5 py-2 text-white/75 hover:text-white hover:bg-white/10 rounded-lg transition-colors text-left group";
         }
       });
 
@@ -408,9 +408,9 @@
                     document.getElementById('current-subtitle').textContent = "| " + mod.subtitle;
                     document.querySelectorAll('#sidebar-nav .nav-btn').forEach(btn => {
                       if (btn.dataset.mod === mKey) {
-                        btn.className = "nav-btn w-full flex items-center justify-between px-3.5 py-2 text-white bg-white/20 font-semibold rounded-lg border-l-4 border-white transition-colors text-left";
+                        btn.className = "nav-btn w-full flex items-center gap-2.5 px-3.5 py-2 text-white bg-white/20 font-semibold rounded-lg border-l-4 border-white transition-colors text-left";
                       } else {
-                        btn.className = "nav-btn w-full flex items-center justify-between px-3.5 py-2 text-white/75 hover:text-white hover:bg-white/10 rounded-lg transition-colors text-left group";
+                        btn.className = "nav-btn w-full flex items-center gap-2.5 px-3.5 py-2 text-white/75 hover:text-white hover:bg-white/10 rounded-lg transition-colors text-left group";
                       }
                     });
                     break;
