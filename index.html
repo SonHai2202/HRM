@@ -154,14 +154,8 @@
         <span class="text-xs text-slate-400 font-normal hidden sm:inline" id="current-subtitle">| Dashboard điều hành nhân sự</span>
       </div>
 
-      <!-- Quick actions / screen selector dropdown -->
+      <!-- Quick actions -->
       <div class="flex items-center gap-2.5">
-        <div class="relative">
-          <select id="screen-selector" onchange="loadDirectScreen(this.value)" class="text-xs bg-slate-50 border border-slate-300 rounded-lg px-2.5 py-1.5 text-slate-700 font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 max-w-[280px]">
-            <!-- Options populated dynamically by JS -->
-          </select>
-        </div>
-        
         <button onclick="refreshCurrentFrame()" title="Tải lại giao diện hiện tại" class="p-1.5 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition-colors border border-slate-200">
           <span class="material-symbols-outlined text-[18px]">refresh</span>
         </button>
@@ -342,7 +336,6 @@
 
     // Khởi tạo Portal khi load trang
     document.addEventListener("DOMContentLoaded", () => {
-      populateScreenDropdown();
       navigateModule('dashboard');
     });
 
@@ -370,32 +363,6 @@
 
       // Load content iframe
       loadIframeContent(currentTabPath);
-
-      // Sync selector dropdown
-      const sel = document.getElementById('screen-selector');
-      if (sel) sel.value = currentTabPath;
-    }
-
-    // Hiển thị các sub-tabs ngang
-    function renderSubtabs(mod) {
-      const container = document.getElementById('subtabs-container');
-      container.innerHTML = '';
-
-      mod.tabs.forEach((tab, index) => {
-        const isActive = (tab.path === currentTabPath);
-        const btn = document.createElement('button');
-        btn.className = isActive 
-          ? "border-b-2 border-blue-600 text-blue-600 font-bold py-2.5 px-2 flex items-center gap-1.5 transition-colors whitespace-nowrap"
-          : "text-slate-500 hover:text-blue-600 font-medium py-2.5 px-2 flex items-center gap-1.5 transition-colors whitespace-nowrap";
-        btn.innerHTML = `<span>${tab.name}</span>`;
-        btn.onclick = () => {
-          currentTabPath = tab.path;
-          renderSubtabs(mod);
-          loadIframeContent(tab.path);
-          document.getElementById('screen-selector').value = tab.path;
-        };
-        container.appendChild(btn);
-      });
     }
 
     // Load file HTML vào iframe và hỗ trợ bắt sự kiện click bên trong iframe
@@ -425,15 +392,36 @@
           innerMain.style.marginLeft = '0px';
         }
 
-        // Bắt click trên các button sub-tab trong trang con
-        doc.querySelectorAll('.border-b button, nav a, .space-x-8 button').forEach(el => {
+        // Lắng nghe khi subtab hoặc link trong iframe chuyển trang để cập nhật tiêu đề trên header index
+        doc.querySelectorAll('.border-b a, nav a, .space-x-8 a, .border-b button').forEach(el => {
           el.addEventListener('click', (e) => {
-            const label = el.textContent.trim().toLowerCase();
-            handleInnerScreenClick(label);
+            const href = el.getAttribute('href');
+            if (href && href !== '#') {
+              // Tìm tab tương ứng trong registry để đồng bộ tiêu đề Header
+              for (const [mKey, mod] of Object.entries(MODULES_REGISTRY)) {
+                for (const tab of mod.tabs) {
+                  if (href.includes(tab.path) || tab.path.includes(href.replace('../', ''))) {
+                    currentModuleKey = mKey;
+                    currentTabPath = tab.path;
+                    document.getElementById('current-title').textContent = mod.title;
+                    document.getElementById('current-badge').textContent = mod.badge;
+                    document.getElementById('current-subtitle').textContent = "| " + mod.subtitle;
+                    document.querySelectorAll('#sidebar-nav .nav-btn').forEach(btn => {
+                      if (btn.dataset.mod === mKey) {
+                        btn.className = "nav-btn w-full flex items-center justify-between px-3 py-2 text-white bg-white/20 font-semibold rounded-lg border-l-4 border-white transition-colors text-left";
+                      } else {
+                        btn.className = "nav-btn w-full flex items-center justify-between px-3 py-2 text-white/75 hover:text-white hover:bg-white/10 rounded-lg transition-colors text-left group";
+                      }
+                    });
+                    break;
+                  }
+                }
+              }
+            }
           });
         });
       } catch (e) {
-        console.log("Cross-context note: Handled smoothly via top tabs.", e);
+        console.log("Cross-context note: Handled smoothly.", e);
       }
     }
 
@@ -452,37 +440,6 @@
           }
         }
       }
-    }
-
-    // Danh sách dropdown chuyển trang nhanh
-    function populateScreenDropdown() {
-      const sel = document.getElementById('screen-selector');
-      sel.innerHTML = '';
-
-      for (const [modKey, mod] of Object.entries(MODULES_REGISTRY)) {
-        const optGroup = document.createElement('optgroup');
-        optGroup.label = mod.title;
-
-        mod.tabs.forEach(tab => {
-          const opt = document.createElement('option');
-          opt.value = tab.path;
-          opt.textContent = tab.name;
-          optGroup.appendChild(opt);
-        });
-
-        sel.appendChild(optGroup);
-      }
-    }
-
-    function loadDirectScreen(path) {
-      for (const [mKey, mod] of Object.entries(MODULES_REGISTRY)) {
-        const matchedTab = mod.tabs.find(t => t.path === path);
-        if (matchedTab) {
-          navigateModule(mKey, path);
-          return;
-        }
-      }
-      loadIframeContent(path);
     }
 
     function refreshCurrentFrame() {
