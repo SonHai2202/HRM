@@ -140,15 +140,15 @@
 <p class="text-body-md font-body-md text-on-surface-variant">Quản lý hồ sơ mở rộng nhân viên, thiết lập tiêu chuẩn chức danh (JD), khung thang bảng lương và cấu hình mức lương thực tế cho toàn bộ tenant.</p>
 </div>
 <div class="flex items-center flex-wrap gap-2.5">
-<button class="flex items-center space-x-1.5 border border-outline-variant bg-surface text-on-surface-variant hover:text-on-surface px-3.5 py-2 rounded-lg text-label-md font-label-md font-medium hover:bg-surface-container-low transition-colors shadow-sm">
+<button onclick="hrmPopconfirm(this, {title: 'Đồng bộ dữ liệu?', message: 'Cập nhật danh sách từ hệ thống Core HRM.', okText: 'Đồng bộ ngay', onConfirm: () => hrmToast('Đồng bộ dữ liệu thành công!', 'success')})" class="flex items-center space-x-1.5 border border-outline-variant bg-surface text-on-surface-variant hover:text-on-surface px-3.5 py-2 rounded-lg text-label-md font-label-md font-medium hover:bg-surface-container-low transition-colors shadow-sm">
 <span class="material-symbols-outlined text-[18px] text-primary">sync</span>
 <span>Đồng bộ từ Core</span>
 </button>
-<button class="flex items-center space-x-1.5 border border-outline-variant bg-surface hover:bg-surface-container-low text-on-surface px-3.5 py-2 rounded-lg text-label-md font-label-md font-medium transition-colors shadow-sm">
+<button onclick="hrmTriggerDownload('HRM_Du_lieu_xuat.xlsx')" class="flex items-center space-x-1.5 border border-outline-variant bg-surface hover:bg-surface-container-low text-on-surface px-3.5 py-2 rounded-lg text-label-md font-label-md font-medium transition-colors shadow-sm">
 <span class="material-symbols-outlined text-[18px] text-green-700">table_view</span>
 <span>Xuất Excel</span>
 </button>
-<button class="flex items-center space-x-1.5 bg-[#0460D9] text-white px-4 py-2 rounded-lg text-label-md font-label-md font-semibold hover:bg-opacity-90 transition-colors shadow-sm">
+<button onclick="hrmOpenCreateModal('employee')" class="flex items-center space-x-1.5 bg-[#0460D9] text-white px-4 py-2 rounded-lg text-label-md font-label-md font-semibold hover:bg-opacity-90 transition-colors shadow-sm">
 <span class="material-symbols-outlined text-[18px]">person_add</span>
 <span>+ Thêm nhân sự mới</span>
 </button>
@@ -619,7 +619,7 @@
 </div>
 <!-- Drawer Actions -->
 <div class="pt-3 border-t border-outline-variant/60 flex items-center justify-between gap-2">
-<button class="flex-1 py-2 px-3 bg-primary hover:bg-primary-container text-white rounded-lg text-xs font-semibold transition-colors flex items-center justify-center gap-1.5 shadow-sm">
+<button onclick="hrmPopconfirm(this, {title: 'Lưu thay đổi?', message: 'Bạn có chắc chắn muốn lưu các thay đổi này không?', okText: 'Lưu ngay', onConfirm: () => hrmToast('Đã lưu cấu hình thành công!', 'success')})" class="flex-1 py-2 px-3 bg-primary hover:bg-primary-container text-white rounded-lg text-xs font-semibold transition-colors flex items-center justify-center gap-1.5 shadow-sm">
 <span class="material-symbols-outlined text-[16px]">save</span>
 <span>Cập nhật thông tin</span>
 </button>
@@ -888,4 +888,5 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 </script>
 
+<script src="../hrm-interactive-hub.js"></script>
 </body></html>

@@ -140,15 +140,15 @@
 <p class="text-body-md font-body-md text-on-surface-variant">Quản lý vòng đời ca làm việc, bảng phân ca kíp (Roster), theo dõi log quẹt thẻ thời gian thực và xử lý giải trình công.</p>
 </div>
 <div class="flex items-center flex-wrap gap-2.5">
-<button class="flex items-center space-x-1.5 border border-outline-variant bg-surface text-on-surface-variant hover:text-on-surface px-3.5 py-2 rounded-lg text-label-md font-label-md font-medium hover:bg-surface-container-low transition-colors shadow-sm">
+<button onclick="hrmOpenCreateModal('shift')" class="flex items-center space-x-1.5 border border-outline-variant bg-surface text-on-surface-variant hover:text-on-surface px-3.5 py-2 rounded-lg text-label-md font-label-md font-medium hover:bg-surface-container-low transition-colors shadow-sm">
 <span class="material-symbols-outlined text-[18px] text-primary">add_alarm</span>
 <span>+ Thêm ca làm việc mới</span>
 </button>
-<button class="flex items-center space-x-1.5 border border-outline-variant bg-surface hover:bg-surface-container-low text-on-surface px-3.5 py-2 rounded-lg text-label-md font-label-md font-medium transition-colors shadow-sm">
+<button onclick="hrmToast('Chọn file Excel từ máy để nhập dữ liệu...', 'info', 'Nhập dữ liệu Excel')" class="flex items-center space-x-1.5 border border-outline-variant bg-surface hover:bg-surface-container-low text-on-surface px-3.5 py-2 rounded-lg text-label-md font-label-md font-medium transition-colors shadow-sm">
 <span class="material-symbols-outlined text-[18px] text-green-700">table_view</span>
 <span>Import Excel</span>
 </button>
-<button class="flex items-center space-x-1.5 bg-[#0460D9] text-white px-4 py-2 rounded-lg text-label-md font-label-md font-semibold hover:bg-opacity-90 transition-colors shadow-sm">
+<button onclick="hrmOpenCreateModal('shift_change')" class="flex items-center space-x-1.5 bg-[#0460D9] text-white px-4 py-2 rounded-lg text-label-md font-label-md font-semibold hover:bg-opacity-90 transition-colors shadow-sm">
 <span class="material-symbols-outlined text-[18px]">post_add</span>
 <span>+ Phân ca nhanh</span>
 </button>
@@ -269,11 +269,11 @@
 </div>
 <!-- Right buttons -->
 <div class="flex items-center gap-2.5 shrink-0">
-<button class="flex items-center space-x-1.5 border border-outline-variant bg-surface hover:bg-surface-container-low text-on-surface px-3 py-2 rounded-lg text-xs font-medium transition-colors shadow-xs">
+<button onclick="hrmTriggerDownload('Bieu_mau_ca_kip.xlsx')" class="flex items-center space-x-1.5 border border-outline-variant bg-surface hover:bg-surface-container-low text-on-surface px-3 py-2 rounded-lg text-xs font-medium transition-colors shadow-xs">
 <span class="material-symbols-outlined text-[17px] text-green-700">file_download</span>
 <span>Xuất biểu mẫu ca</span>
 </button>
-<button class="flex items-center space-x-1.5 bg-[#0460D9] text-white px-3.5 py-2 rounded-lg text-xs font-semibold hover:bg-opacity-90 transition-colors shadow-sm">
+<button onclick="hrmOpenCreateModal('shift')" class="flex items-center space-x-1.5 bg-[#0460D9] text-white px-3.5 py-2 rounded-lg text-xs font-semibold hover:bg-opacity-90 transition-colors shadow-sm">
 <span class="material-symbols-outlined text-[17px]">add</span>
 <span>+ Thêm ca làm việc mới</span>
 </button>
@@ -686,7 +686,7 @@
 </div>
 <!-- Nút lưu & áp dụng -->
 <div class="pt-2 border-t border-outline-variant flex items-center gap-2">
-<button class="flex-1 bg-[#0460D9] text-white py-2 rounded-lg font-semibold hover:bg-opacity-90 transition-colors shadow-sm flex items-center justify-center gap-1.5">
+<button onclick="hrmPopconfirm(this, {title: 'Lưu thay đổi?', message: 'Bạn có chắc chắn muốn lưu các thay đổi này không?', okText: 'Lưu ngay', onConfirm: () => hrmToast('Đã lưu cấu hình thành công!', 'success')})" class="flex-1 bg-[#0460D9] text-white py-2 rounded-lg font-semibold hover:bg-opacity-90 transition-colors shadow-sm flex items-center justify-center gap-1.5">
 <span class="material-symbols-outlined text-[17px]">save</span>
 <span>Lưu thiết lập ca</span>
 </button>
@@ -746,4 +746,5 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
+<script src="../hrm-interactive-hub.js"></script>
 </body></html>

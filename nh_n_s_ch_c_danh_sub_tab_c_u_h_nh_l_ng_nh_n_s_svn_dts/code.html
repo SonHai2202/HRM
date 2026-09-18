@@ -140,15 +140,15 @@
 <p class="text-body-md font-body-md text-on-surface-variant">Quản lý hồ sơ mở rộng nhân viên, thiết lập tiêu chuẩn chức danh (JD), khung thang bảng lương và cấu hình mức lương thực tế cho toàn bộ tenant.</p>
 </div>
 <div class="flex items-center flex-wrap gap-2.5">
-<button class="flex items-center space-x-1.5 border border-outline-variant bg-surface text-on-surface-variant hover:text-on-surface px-3.5 py-2 rounded-lg text-label-md font-label-md font-medium hover:bg-surface-container-low transition-colors shadow-sm">
+<button onclick="hrmPopconfirm(this, {title: 'Đồng bộ dữ liệu?', message: 'Cập nhật danh sách từ hệ thống Core HRM.', okText: 'Đồng bộ ngay', onConfirm: () => hrmToast('Đồng bộ dữ liệu thành công!', 'success')})" class="flex items-center space-x-1.5 border border-outline-variant bg-surface text-on-surface-variant hover:text-on-surface px-3.5 py-2 rounded-lg text-label-md font-label-md font-medium hover:bg-surface-container-low transition-colors shadow-sm">
 <span class="material-symbols-outlined text-[18px] text-primary">sync</span>
 <span>Đồng bộ từ Core</span>
 </button>
-<button class="flex items-center space-x-1.5 border border-outline-variant bg-surface hover:bg-surface-container-low text-on-surface px-3.5 py-2 rounded-lg text-label-md font-label-md font-medium transition-colors shadow-sm">
+<button onclick="hrmTriggerDownload('HRM_Du_lieu_xuat.xlsx')" class="flex items-center space-x-1.5 border border-outline-variant bg-surface hover:bg-surface-container-low text-on-surface px-3.5 py-2 rounded-lg text-label-md font-label-md font-medium transition-colors shadow-sm">
 <span class="material-symbols-outlined text-[18px] text-green-700">table_view</span>
 <span>Xuất Excel</span>
 </button>
-<button class="flex items-center space-x-1.5 bg-[#0460D9] text-white px-4 py-2 rounded-lg text-label-md font-label-md font-semibold hover:bg-opacity-90 transition-colors shadow-sm">
+<button onclick="hrmOpenCreateModal('employee')" class="flex items-center space-x-1.5 bg-[#0460D9] text-white px-4 py-2 rounded-lg text-label-md font-label-md font-semibold hover:bg-opacity-90 transition-colors shadow-sm">
 <span class="material-symbols-outlined text-[18px]">person_add</span>
 <span>+ Thêm nhân sự mới</span>
 </button>
@@ -255,11 +255,11 @@
 </div>
 <!-- Right Actions -->
 <div class="flex items-center gap-2.5 shrink-0">
-<button class="flex items-center space-x-1.5 border border-outline-variant bg-surface hover:bg-surface-container-low text-on-surface px-3.5 py-2 rounded-lg text-xs font-medium transition-colors shadow-xs">
+<button onclick="hrmTriggerDownload('HRM_Du_lieu_xuat.xlsx')" class="flex items-center space-x-1.5 border border-outline-variant bg-surface hover:bg-surface-container-low text-on-surface px-3.5 py-2 rounded-lg text-xs font-medium transition-colors shadow-xs">
 <span class="material-symbols-outlined text-[17px] text-green-700">table_view</span>
 <span>Xuất Excel</span>
 </button>
-<button class="flex items-center space-x-1.5 bg-[#0460D9] text-white px-4 py-2 rounded-lg text-xs font-semibold hover:bg-opacity-90 transition-colors shadow-sm">
+<button onclick="hrmOpenCreateModal('quick')" class="flex items-center space-x-1.5 bg-[#0460D9] text-white px-4 py-2 rounded-lg text-xs font-semibold hover:bg-opacity-90 transition-colors shadow-sm">
 <span class="material-symbols-outlined text-[17px]">add</span>
 <span>+ Thiết lập / Tăng lương</span>
 </button>
@@ -379,11 +379,11 @@
 </td>
 <td class="py-3.5 px-3 text-center">
 <div class="flex items-center justify-center gap-1">
-<button class="flex items-center gap-1 px-2 py-1 rounded-lg border border-outline-variant/60 text-gray-700 hover:bg-surface-container-high transition-colors text-[11px] font-medium" title="Xem lộ trình biến động lương">
+<button onclick="hrmOpenDetailDrawer('Lịch sử kiểm toán & Thay đổi', '#AUDIT-LOG', 'INFO')" class="flex items-center gap-1 px-2 py-1 rounded-lg border border-outline-variant/60 text-gray-700 hover:bg-surface-container-high transition-colors text-[11px] font-medium" title="Xem lộ trình biến động lương">
 <span class="material-symbols-outlined text-[14px] text-primary">history</span>
 <span>Lịch sử</span>
 </button>
-<button class="p-1 rounded-lg border border-outline-variant/60 text-gray-500 hover:text-on-surface hover:bg-surface-container-low transition-colors">
+<button onclick="hrmOpenDetailDrawer('Chi tiết bản ghi dữ liệu', '#HRM-ROW-243', 'ACTIVE')" class="p-1 rounded-lg border border-outline-variant/60 text-gray-500 hover:text-on-surface hover:bg-surface-container-low transition-colors">
 <span class="material-symbols-outlined text-[16px]">more_vert</span>
 </button>
 </div>
@@ -431,11 +431,11 @@
 </td>
 <td class="py-3.5 px-3 text-center">
 <div class="flex items-center justify-center gap-1">
-<button class="flex items-center gap-1 px-2 py-1 rounded-lg border border-outline-variant/60 text-gray-700 hover:bg-surface-container-high transition-colors text-[11px] font-medium" title="Xem lộ trình biến động lương">
+<button onclick="hrmOpenDetailDrawer('Lịch sử kiểm toán & Thay đổi', '#AUDIT-LOG', 'INFO')" class="flex items-center gap-1 px-2 py-1 rounded-lg border border-outline-variant/60 text-gray-700 hover:bg-surface-container-high transition-colors text-[11px] font-medium" title="Xem lộ trình biến động lương">
 <span class="material-symbols-outlined text-[14px] text-primary">history</span>
 <span>Lịch sử</span>
 </button>
-<button class="p-1 rounded-lg border border-outline-variant/60 text-gray-500 hover:text-on-surface hover:bg-surface-container-low transition-colors">
+<button onclick="hrmOpenDetailDrawer('Chi tiết bản ghi dữ liệu', '#HRM-ROW-987', 'ACTIVE')" class="p-1 rounded-lg border border-outline-variant/60 text-gray-500 hover:text-on-surface hover:bg-surface-container-low transition-colors">
 <span class="material-symbols-outlined text-[16px]">more_vert</span>
 </button>
 </div>
@@ -483,11 +483,11 @@
 </td>
 <td class="py-3.5 px-3 text-center">
 <div class="flex items-center justify-center gap-1">
-<button class="flex items-center gap-1 px-2 py-1 rounded-lg border border-outline-variant/60 text-gray-700 hover:bg-surface-container-high transition-colors text-[11px] font-medium" title="Xem lộ trình biến động lương">
+<button onclick="hrmOpenDetailDrawer('Lịch sử kiểm toán & Thay đổi', '#AUDIT-LOG', 'INFO')" class="flex items-center gap-1 px-2 py-1 rounded-lg border border-outline-variant/60 text-gray-700 hover:bg-surface-container-high transition-colors text-[11px] font-medium" title="Xem lộ trình biến động lương">
 <span class="material-symbols-outlined text-[14px] text-primary">history</span>
 <span>Lịch sử</span>
 </button>
-<button class="p-1 rounded-lg border border-outline-variant/60 text-gray-500 hover:text-on-surface hover:bg-surface-container-low transition-colors">
+<button onclick="hrmOpenDetailDrawer('Chi tiết bản ghi dữ liệu', '#HRM-ROW-441', 'ACTIVE')" class="p-1 rounded-lg border border-outline-variant/60 text-gray-500 hover:text-on-surface hover:bg-surface-container-low transition-colors">
 <span class="material-symbols-outlined text-[16px]">more_vert</span>
 </button>
 </div>
@@ -535,11 +535,11 @@
 </td>
 <td class="py-3.5 px-3 text-center">
 <div class="flex items-center justify-center gap-1">
-<button class="flex items-center gap-1 px-2 py-1 rounded-lg border border-outline-variant/60 text-gray-700 hover:bg-surface-container-high transition-colors text-[11px] font-medium" title="Xem lộ trình biến động lương">
+<button onclick="hrmOpenDetailDrawer('Lịch sử kiểm toán & Thay đổi', '#AUDIT-LOG', 'INFO')" class="flex items-center gap-1 px-2 py-1 rounded-lg border border-outline-variant/60 text-gray-700 hover:bg-surface-container-high transition-colors text-[11px] font-medium" title="Xem lộ trình biến động lương">
 <span class="material-symbols-outlined text-[14px] text-primary">history</span>
 <span>Lịch sử</span>
 </button>
-<button class="p-1 rounded-lg border border-outline-variant/60 text-gray-500 hover:text-on-surface hover:bg-surface-container-low transition-colors">
+<button onclick="hrmOpenDetailDrawer('Chi tiết bản ghi dữ liệu', '#HRM-ROW-628', 'ACTIVE')" class="p-1 rounded-lg border border-outline-variant/60 text-gray-500 hover:text-on-surface hover:bg-surface-container-low transition-colors">
 <span class="material-symbols-outlined text-[16px]">more_vert</span>
 </button>
 </div>
@@ -587,11 +587,11 @@
 </td>
 <td class="py-3.5 px-3 text-center">
 <div class="flex items-center justify-center gap-1">
-<button class="flex items-center gap-1 px-2 py-1 rounded-lg border border-outline-variant/60 text-gray-700 hover:bg-surface-container-high transition-colors text-[11px] font-medium" title="Xem lộ trình biến động lương">
+<button onclick="hrmOpenDetailDrawer('Lịch sử kiểm toán & Thay đổi', '#AUDIT-LOG', 'INFO')" class="flex items-center gap-1 px-2 py-1 rounded-lg border border-outline-variant/60 text-gray-700 hover:bg-surface-container-high transition-colors text-[11px] font-medium" title="Xem lộ trình biến động lương">
 <span class="material-symbols-outlined text-[14px] text-primary">history</span>
 <span>Lịch sử</span>
 </button>
-<button class="p-1 rounded-lg border border-outline-variant/60 text-gray-500 hover:text-on-surface hover:bg-surface-container-low transition-colors">
+<button onclick="hrmOpenDetailDrawer('Chi tiết bản ghi dữ liệu', '#HRM-ROW-706', 'ACTIVE')" class="p-1 rounded-lg border border-outline-variant/60 text-gray-500 hover:text-on-surface hover:bg-surface-container-low transition-colors">
 <span class="material-symbols-outlined text-[16px]">more_vert</span>
 </button>
 </div>
@@ -639,11 +639,11 @@
 </td>
 <td class="py-3.5 px-3 text-center">
 <div class="flex items-center justify-center gap-1">
-<button class="flex items-center gap-1 px-2 py-1 rounded-lg border border-outline-variant/60 text-gray-700 hover:bg-surface-container-high transition-colors text-[11px] font-medium" title="Xem lộ trình biến động lương">
+<button onclick="hrmOpenDetailDrawer('Lịch sử kiểm toán & Thay đổi', '#AUDIT-LOG', 'INFO')" class="flex items-center gap-1 px-2 py-1 rounded-lg border border-outline-variant/60 text-gray-700 hover:bg-surface-container-high transition-colors text-[11px] font-medium" title="Xem lộ trình biến động lương">
 <span class="material-symbols-outlined text-[14px] text-primary">history</span>
 <span>Lịch sử</span>
 </button>
-<button class="p-1 rounded-lg border border-outline-variant/60 text-gray-500 hover:text-on-surface hover:bg-surface-container-low transition-colors">
+<button onclick="hrmOpenDetailDrawer('Chi tiết bản ghi dữ liệu', '#HRM-ROW-103', 'ACTIVE')" class="p-1 rounded-lg border border-outline-variant/60 text-gray-500 hover:text-on-surface hover:bg-surface-container-low transition-colors">
 <span class="material-symbols-outlined text-[16px]">more_vert</span>
 </button>
 </div>
@@ -723,4 +723,5 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
+<script src="../hrm-interactive-hub.js"></script>
 </body></html>
